@@ -52,7 +52,7 @@
             label8 = new Label();
             cbStudentid = new ComboBox();
             label9 = new Label();
-            subjectText = new TextBox();
+            textBoxSubject = new TextBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -79,7 +79,7 @@
             // 
             // studentName
             // 
-            studentName.Location = new Point(156, 146);
+            studentName.Location = new Point(156, 189);
             studentName.Name = "studentName";
             studentName.Size = new Size(125, 27);
             studentName.TabIndex = 3;
@@ -88,7 +88,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(22, 153);
+            label2.Location = new Point(22, 196);
             label2.Name = "label2";
             label2.Size = new Size(104, 20);
             label2.TabIndex = 4;
@@ -131,7 +131,7 @@
             // 
             // pe
             // 
-            pe.Location = new Point(156, 469);
+            pe.Location = new Point(156, 435);
             pe.Name = "pe";
             pe.Size = new Size(125, 27);
             pe.TabIndex = 9;
@@ -140,7 +140,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(21, 476);
+            label5.Location = new Point(21, 442);
             label5.Name = "label5";
             label5.Size = new Size(105, 20);
             label5.TabIndex = 10;
@@ -251,26 +251,26 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(22, 191);
+            label9.Location = new Point(22, 152);
             label9.Name = "label9";
             label9.Size = new Size(58, 20);
             label9.TabIndex = 24;
             label9.Text = "Subject";
             // 
-            // subjectText
+            // textBoxSubject
             // 
-            subjectText.Location = new Point(156, 188);
-            subjectText.Name = "subjectText";
-            subjectText.Size = new Size(125, 27);
-            subjectText.TabIndex = 25;
-            subjectText.TextChanged += subjectText_TextChanged;
+            textBoxSubject.Location = new Point(156, 149);
+            textBoxSubject.Name = "textBoxSubject";
+            textBoxSubject.Size = new Size(125, 27);
+            textBoxSubject.TabIndex = 25;
+            textBoxSubject.TextChanged += textBoxSubject_TextChanged;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(962, 520);
-            Controls.Add(subjectText);
+            Controls.Add(textBoxSubject);
             Controls.Add(label9);
             Controls.Add(cbStudentid);
             Controls.Add(label8);
@@ -328,6 +328,6 @@
         private Label label8;
         private ComboBox cbStudentid;
         private Label label9;
-        private TextBox subjectText;
+        private TextBox textBoxSubject;
     }
 }

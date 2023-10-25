@@ -55,7 +55,7 @@ namespace Project.Logics
             var studentIds = _context.Students.Select(s => s.StudentId).ToList();
             return studentIds;
         }
-        public StudentInfo GetStudentInfoByStudentId(int studentId)
+        public StudentInfo GetStudentInfoByStudentIdAndSubjectName(int studentId, string subjectName)
         {
             var studentInfo = _context.Students
                 .Where(s => s.StudentId == studentId)
@@ -63,23 +63,23 @@ namespace Project.Logics
                 {
                     StudentName = s.StudentName,
                     Lab1 = s.ScoreSubjectStudents
-                        .Where(sss => sss.StudentId == studentId)
+                        .Where(sss => sss.Subject.SubjectName == subjectName)
                         .Select(sss => sss.Score.Lab1)
                         .FirstOrDefault(),
                     Lab2 = s.ScoreSubjectStudents
-                        .Where(sss => sss.StudentId == studentId)
+                        .Where(sss => sss.Subject.SubjectName == subjectName)
                         .Select(sss => sss.Score.Lab2)
                         .FirstOrDefault(),
                     Assignment = s.ScoreSubjectStudents
-                        .Where(sss => sss.StudentId == studentId)
+                        .Where(sss => sss.Subject.SubjectName == subjectName)
                         .Select(sss => sss.Score.Assignment)
                         .FirstOrDefault(),
                     TheoryExam = s.ScoreSubjectStudents
-                        .Where(sss => sss.StudentId == studentId)
+                        .Where(sss => sss.Subject.SubjectName == subjectName)
                         .Select(sss => sss.Score.TheoryExam)
                         .FirstOrDefault(),
                     PracticalExam = s.ScoreSubjectStudents
-                        .Where(sss => sss.StudentId == studentId)
+                        .Where(sss => sss.Subject.SubjectName == subjectName)
                         .Select(sss => sss.Score.PracticalExam)
                         .FirstOrDefault()
                 })
@@ -87,6 +87,7 @@ namespace Project.Logics
 
             return studentInfo;
         }
+
         public List<int> GetStudentIdsByClass(string className)
         {
             var studentIds = _context.ClassStudentSubjects
@@ -96,8 +97,6 @@ namespace Project.Logics
 
             return studentIds;
         }
-  
-
 
 
 

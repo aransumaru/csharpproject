@@ -16,7 +16,7 @@ namespace Project.Logics
         {
             return _context.Scores.ToList();
         }
-        public bool UpdateStudentInfo(int studentId, int lab1, int lab2, int assignment, int theoryExam, int practicalExam)
+        public bool UpdateStudentInfo(int studentId, string subjectName, int lab1, int lab2, int assignment, int theoryExam, int practicalExam)
         {
             if (lab1 < 0 || lab1 > 10 || lab2 < 0 || lab2 > 10 || assignment < 0 || assignment > 10 || theoryExam < 0 || theoryExam > 10 || practicalExam < 0 || practicalExam > 10)
             {
@@ -24,31 +24,38 @@ namespace Project.Logics
                 MessageBox.Show(messageBox);
                 return false;
             }
-            var student = _context.Students.Include(s => s.ScoreSubjectStudents)
-                               .ThenInclude(sss => sss.Score)
-                               .FirstOrDefault(s => s.StudentId == studentId);
 
-            if (student == null)
+            var scoreSubjectStudent = _context.Students
+                .Where(s => s.StudentId == studentId)
+                .SelectMany(s => s.ScoreSubjectStudents)
+                .Include(sss => sss.Score)
+                .Select(sss => new
+                {
+                    SubjectName = sss.Subject.SubjectName,
+                    Score = sss.Score
+                })
+                .FirstOrDefault(sss => sss.SubjectName == subjectName);
+
+            if (scoreSubjectStudent != null)
             {
-                messageBox = "Student not found.";
+                var score = scoreSubjectStudent.Score;
+                score.Lab1 = lab1;
+                score.Lab2 = lab2;
+                score.Assignment = assignment;
+                score.TheoryExam = theoryExam;
+                score.PracticalExam = practicalExam;
+                _context.SaveChanges();
+                messageBox = "Student information updated successfully.";
+                MessageBox.Show(messageBox);
+                return true;
+            }
+            else
+            {
+                messageBox = "Subject not found for the specified student.";
                 MessageBox.Show(messageBox);
                 return false;
             }
-            
-            var scoreSubjectStudents = student.ScoreSubjectStudents.FirstOrDefault();
-            if (scoreSubjectStudents != null)
-            {
-                scoreSubjectStudents.Score.Lab1 = lab1;
-                scoreSubjectStudents.Score.Lab2 = lab2;
-                scoreSubjectStudents.Score.Assignment = assignment;
-                scoreSubjectStudents.Score.TheoryExam = theoryExam;
-                scoreSubjectStudents.Score.PracticalExam = practicalExam;
-            }
-
-            _context.SaveChanges();
-            messageBox = "Student information updated successfully.";
-            MessageBox.Show(messageBox);
-            return true;
         }
+
     }
 }

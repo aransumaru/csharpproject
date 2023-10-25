@@ -13,5 +13,14 @@ namespace Project.Logics
         {
             return _context.Subjects.ToList();
         }
+        public string GetSubjectNameByClassNameAndStudentId(string className, int studentId)
+        {
+            var subjectName = _context.ClassStudentSubjects
+                .Where(css => css.Class.ClassName == className && css.Student.StudentId == studentId)
+                .Select(css => css.Subject.SubjectName)
+                .FirstOrDefault();
+
+            return subjectName;
+        }
     }
 }

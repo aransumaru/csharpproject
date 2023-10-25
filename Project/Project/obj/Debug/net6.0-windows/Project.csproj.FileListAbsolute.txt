@@ -5,10 +5,12 @@ C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Project.dll
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Project.pdb
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Azure.Core.dll
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Azure.Identity.dll
+C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Humanizer.dll
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Microsoft.Data.SqlClient.dll
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.dll
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Microsoft.Extensions.Caching.Abstractions.dll
@@ -16,6 +18,7 @@ C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Microsoft.E
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Microsoft.Extensions.Configuration.Abstractions.dll
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyModel.dll
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Microsoft.Extensions.Logging.dll
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Microsoft.Extensions.Options.dll
@@ -29,10 +32,13 @@ C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Microsoft.I
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Microsoft.IdentityModel.Tokens.dll
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Microsoft.SqlServer.Server.dll
+C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Mono.TextTemplating.dll
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\System.Configuration.ConfigurationManager.dll
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\System.Memory.Data.dll
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\System.Runtime.Caching.dll
+C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\System.Text.Encodings.Web.dll
+C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\System.Text.Json.dll
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\runtimes\unix\lib\net6.0\Microsoft.Data.SqlClient.dll
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\Microsoft.Data.SqlClient.dll
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
@@ -40,8 +46,10 @@ C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\runtimes\wi
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
+C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 C:\Users\arans\source\repos\Project\Project\obj\Debug\net6.0-windows\Project.csproj.AssemblyReference.cache
 C:\Users\arans\source\repos\Project\Project\obj\Debug\net6.0-windows\Project.Form1.resources
+C:\Users\arans\source\repos\Project\Project\obj\Debug\net6.0-windows\Project.Form2.resources
 C:\Users\arans\source\repos\Project\Project\obj\Debug\net6.0-windows\Project.csproj.GenerateResource.cache
 C:\Users\arans\source\repos\Project\Project\obj\Debug\net6.0-windows\Project.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\arans\source\repos\Project\Project\obj\Debug\net6.0-windows\Project.AssemblyInfoInputs.cache
@@ -53,11 +61,3 @@ C:\Users\arans\source\repos\Project\Project\obj\Debug\net6.0-windows\refint\Proj
 C:\Users\arans\source\repos\Project\Project\obj\Debug\net6.0-windows\Project.pdb
 C:\Users\arans\source\repos\Project\Project\obj\Debug\net6.0-windows\Project.genruntimeconfig.cache
 C:\Users\arans\source\repos\Project\Project\obj\Debug\net6.0-windows\ref\Project.dll
-C:\Users\arans\source\repos\Project\Project\obj\Debug\net6.0-windows\Project.Form2.resources
-C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Humanizer.dll
-C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Microsoft.EntityFrameworkCore.Design.dll
-C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Microsoft.Extensions.DependencyModel.dll
-C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\Mono.TextTemplating.dll
-C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\System.Text.Encodings.Web.dll
-C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\System.Text.Json.dll
-C:\Users\arans\source\repos\Project\Project\bin\Debug\net6.0-windows\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll

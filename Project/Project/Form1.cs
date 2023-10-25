@@ -11,6 +11,7 @@ namespace Project
         StudentServices studentServices = new StudentServices();
         ClassServices classServices = new ClassServices();
         ScoreServices scoreServices = new ScoreServices();
+        SubjectServices subjectServices = new SubjectServices();
 
         public Form1()
         {
@@ -63,9 +64,11 @@ namespace Project
             if (cbStudentid.SelectedItem != null)
             {
                 int selectedStudentId = (int)cbStudentid.SelectedItem;
-                var studentInfo = studentServices.GetStudentInfoByStudentId(selectedStudentId);
+                string? selectedClassName = cbClass.SelectedItem as string;
+                string selectedSubjectName = subjectServices.GetSubjectNameByClassNameAndStudentId(selectedClassName, selectedStudentId);
+                var studentInfo = studentServices.GetStudentInfoByStudentIdAndSubjectName(selectedStudentId, selectedSubjectName);
                 studentName.Text = studentInfo.StudentName;
-                subjectText.Text = studentInfo.SubjectName;
+                textBoxSubject.Text = selectedSubjectName;
                 lab1.Text = studentInfo.Lab1.ToString();
                 lab2.Text = studentInfo.Lab2.ToString();
                 assignment.Text = studentInfo.Assignment.ToString();
@@ -107,15 +110,17 @@ namespace Project
         {
             if (cbStudentid.SelectedItem != null)
             {
+
                 int selectedStudentId = (int)cbStudentid.SelectedItem;
+                string selectedSubjectName = textBoxSubject.Text;
+                Console.WriteLine(selectedSubjectName);
                 int lab1Score = int.Parse(lab1.Text);
                 int lab2Score = int.Parse(lab2.Text);
                 int assignmentScore = int.Parse(assignment.Text);
                 int theoryExamScore = int.Parse(fe.Text);
                 int practicalExamScore = int.Parse(pe.Text);
                 scoreServices.messageBox = "";
-                bool updated = scoreServices.UpdateStudentInfo(selectedStudentId, lab1Score, lab2Score, assignmentScore, theoryExamScore, practicalExamScore);
-
+                bool updated = scoreServices.UpdateStudentInfo(selectedStudentId, selectedSubjectName, lab1Score, lab2Score, assignmentScore, theoryExamScore, practicalExamScore);
                 string selectedClassName = cbClass.SelectedValue.ToString();
                 List<StudentInfo> studentInfo = studentServices.GetStudentInfoByClassName(selectedClassName);
                 dataGridView1.DataSource = studentInfo;
@@ -125,8 +130,14 @@ namespace Project
 
         }
 
-        private void subjectText_TextChanged(object sender, EventArgs e)
+        private void cbSubjectName_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void textBoxSubject_TextChanged(object sender, EventArgs e)
+        {
+            textBoxSubject.Enabled = false;
 
         }
     }
