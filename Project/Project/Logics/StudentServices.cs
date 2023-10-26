@@ -25,6 +25,7 @@ namespace Project.Logics
                     StudentId = css.Student.StudentId,
                     StudentName = css.Student.StudentName,
                     SubjectName = css.Subject.SubjectName,
+                    Sex = css.Student.Sex,
                     Lab1 = css.Student.ScoreSubjectStudents
                         .Where(sss => sss.SubjectId == css.SubjectId)
                         .Select(sss => sss.Score.Lab1)
@@ -97,8 +98,21 @@ namespace Project.Logics
 
             return studentIds;
         }
+        public List<Student> GetListStudentByStudentId(int studentId)
+        {
+            var students = _context.Students
+                .Where(s => s.StudentId == studentId)
+                .ToList();
 
+            return students;
+        }
+        public Student GetStudentInfoByStudentId(int studentId)
+        {
+            var student = _context.Students
+                .Where(s => s.StudentId == studentId)
+                .FirstOrDefault();
 
-
+            return student;
+        }
     }
 }

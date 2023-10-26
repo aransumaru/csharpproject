@@ -12,6 +12,4 @@ public partial class Subject
     public virtual ICollection<ClassStudentSubject> ClassStudentSubjects { get; set; } = new List<ClassStudentSubject>();
 
     public virtual ICollection<ScoreSubjectStudent> ScoreSubjectStudents { get; set; } = new List<ScoreSubjectStudent>();
-
-    public virtual ICollection<Student> Students { get; set; } = new List<Student>();
 }

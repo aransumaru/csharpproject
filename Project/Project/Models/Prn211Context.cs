@@ -125,26 +125,10 @@ public partial class Prn211Context : DbContext
             entity.Property(e => e.StudentId)
                 .ValueGeneratedNever()
                 .HasColumnName("studentId");
+            entity.Property(e => e.Dob)
+                .HasColumnType("date")
+                .HasColumnName("DOB");
             entity.Property(e => e.StudentName).HasColumnName("studentName");
-
-            entity.HasMany(d => d.Subjects).WithMany(p => p.Students)
-                .UsingEntity<Dictionary<string, object>>(
-                    "StudentSubject",
-                    r => r.HasOne<Subject>().WithMany()
-                        .HasForeignKey("SubjectId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK__StudentSu__subje__38996AB5"),
-                    l => l.HasOne<Student>().WithMany()
-                        .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK__StudentSu__stude__37A5467C"),
-                    j =>
-                    {
-                        j.HasKey("StudentId", "SubjectId").HasName("PK__StudentS__57DE4C4A73B32A4E");
-                        j.ToTable("StudentSubject");
-                        j.IndexerProperty<int>("StudentId").HasColumnName("studentId");
-                        j.IndexerProperty<int>("SubjectId").HasColumnName("subjectId");
-                    });
         });
 
         modelBuilder.Entity<Subject>(entity =>

@@ -12,7 +12,10 @@ insert into [Subject] values
 create table Student(
 	[studentId] int primary key not null,
 	[studentName] nvarchar (max) not null,
+	[DOB] Date,
+	[Sex] nvarchar,
 )
+
 insert into Student values
 (1, 'Maria Anders'),
 (2, 'Ana Trujillo'),
@@ -266,4 +269,36 @@ select * from Student
 select * from StudentSubject
 select * from [Subject]
 
-select 
+ALTER TABLE Student
+ADD DOB DATE,
+    Sex NVARCHAR(MAX);
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Female' WHERE studentId = 1;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Male' WHERE studentId = 2;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Female' WHERE studentId = 3;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Male' WHERE studentId = 4;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Female' WHERE studentId = 5;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Male' WHERE studentId = 6;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Male' WHERE studentId = 7;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Male' WHERE studentId = 8;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Female' WHERE studentId = 9;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Male' WHERE studentId = 10;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Male' WHERE studentId = 11;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Female' WHERE studentId = 12;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Male' WHERE studentId = 13;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Male' WHERE studentId = 14;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Male' WHERE studentId = 15;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Female' WHERE studentId = 16;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Female' WHERE studentId = 17;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Male' WHERE studentId = 18;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Female' WHERE studentId = 19;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Male' WHERE studentId = 20;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Male' WHERE studentId = 21;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Male' WHERE studentId = 22;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Male' WHERE studentId = 23;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Female' WHERE studentId = 24;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Male' WHERE studentId = 25;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Male' WHERE studentId = 26;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Female' WHERE studentId = 27;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Male' WHERE studentId = 28;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Female' WHERE studentId = 29;
+	UPDATE Student SET DOB = '2003-01-29', Sex = 'Female' WHERE studentId = 30;

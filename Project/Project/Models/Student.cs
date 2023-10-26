@@ -9,9 +9,11 @@ public partial class Student
 
     public string StudentName { get; set; } = null!;
 
+    public DateTime? Dob { get; set; }
+
+    public string? Sex { get; set; }
+
     public virtual ICollection<ClassStudentSubject> ClassStudentSubjects { get; set; } = new List<ClassStudentSubject>();
 
     public virtual ICollection<ScoreSubjectStudent> ScoreSubjectStudents { get; set; } = new List<ScoreSubjectStudent>();
-
-    public virtual ICollection<Subject> Subjects { get; set; } = new List<Subject>();
 }

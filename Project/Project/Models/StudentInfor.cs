@@ -13,6 +13,8 @@ namespace Project.Models
             public int StudentId { get; set; }
             public string StudentName { get; set; }
             public string SubjectName { get; set; }
+            public DateTime? DOB { get; set; }
+            public string Sex { get; set; } 
             public int? Lab1 { get; set; }
             public int? Lab2 { get; set; }
             public int? Assignment { get; set; }

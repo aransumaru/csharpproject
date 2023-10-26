@@ -26,6 +26,26 @@ namespace Project
         {
             string selectedClassName = cbClass.SelectedValue.ToString();
             List<StudentInfo> studentInfo = studentServices.GetStudentInfoByClassName(selectedClassName);
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.Columns.Clear();
+            dataGridView1.Columns.Add("StudentId", "Student ID");
+            dataGridView1.Columns.Add("StudentName", "Student Name");
+            dataGridView1.Columns.Add("SubjectName", "Subject Name");
+            dataGridView1.Columns.Add("Sex", "Sex");
+            dataGridView1.Columns.Add("Lab1", "Lab 1");
+            dataGridView1.Columns.Add("Lab2", "Lab 2");
+            dataGridView1.Columns.Add("Assignment", "Assignment");
+            dataGridView1.Columns.Add("TheoryExam", "Theory Exam");
+            dataGridView1.Columns.Add("PracticalExam", "Practical Exam");
+            dataGridView1.Columns["StudentId"].DataPropertyName = "StudentId";
+            dataGridView1.Columns["StudentName"].DataPropertyName = "StudentName";
+            dataGridView1.Columns["SubjectName"].DataPropertyName = "SubjectName";
+            dataGridView1.Columns["Sex"].DataPropertyName = "Sex";
+            dataGridView1.Columns["Lab1"].DataPropertyName = "Lab1";
+            dataGridView1.Columns["Lab2"].DataPropertyName = "Lab2";
+            dataGridView1.Columns["Assignment"].DataPropertyName = "Assignment";
+            dataGridView1.Columns["TheoryExam"].DataPropertyName = "TheoryExam";
+            dataGridView1.Columns["PracticalExam"].DataPropertyName = "PracticalExam";
             dataGridView1.DataSource = studentInfo;
         }
 
