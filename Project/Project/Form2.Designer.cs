@@ -76,6 +76,7 @@
             studentName.Name = "studentName";
             studentName.Size = new Size(113, 27);
             studentName.TabIndex = 3;
+            studentName.TextChanged += studentName_TextChanged;
             // 
             // label2
             // 

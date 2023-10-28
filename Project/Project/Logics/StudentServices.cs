@@ -98,15 +98,7 @@ namespace Project.Logics
 
             return studentIds;
         }
-        public List<Student> GetListStudentByStudentId(int studentId)
-        {
-            var students = _context.Students
-                .Where(s => s.StudentId == studentId)
-                .ToList();
-
-            return students;
-        }
-        public Student GetStudentInfoByStudentId(int studentId)
+        public Student GetStudentByStudentId(int studentId)
         {
             var student = _context.Students
                 .Where(s => s.StudentId == studentId)
@@ -114,5 +106,14 @@ namespace Project.Logics
 
             return student;
         }
+        public Student GetStudentByStudentName(string studentName)
+        {
+            var student = _context.Students
+                .Where(s => s.StudentName == studentName)
+                .FirstOrDefault();
+
+            return student;
+        }
+
     }
 }
