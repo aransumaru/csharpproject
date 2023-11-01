@@ -23,5 +23,11 @@ namespace Project.Logics
 
             return classNames;
         }
+        public Class GetClassByClassName(string className)
+        {
+            var dbContext = new Prn211Context();
+            var classNames = dbContext.Classes.FirstOrDefault(c => c.ClassName == className);
+            return classNames;
+        }
     }
 }

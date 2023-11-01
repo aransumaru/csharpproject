@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OfficeOpenXml;
 using Project.Models;
 using System;
 using System.Collections.Generic;
@@ -106,6 +107,37 @@ namespace Project.Logics
 
             return student;
         }
+        public StudentInfo GetStudentInfoByStudentId(int studentId)
+        {
+            var studentInfo = _context.Students
+                .Where(s => s.StudentId == studentId)
+                .Select(s => new StudentInfo
+                {
+                    StudentId = s.StudentId,
+                    StudentName = s.StudentName,
+                    Sex = s.Sex,
+                    DOB = s.Dob,
+                    ClassName = string.Join(", ", s.ClassStudentSubjects.Select(css => css.Class.ClassName).Distinct()),
+                    SubjectName = string.Join(", ", s.ClassStudentSubjects.Select(css => css.Subject.SubjectName).Distinct())
+                })
+                .FirstOrDefault();
+
+            return studentInfo;
+        }
+        public List<StudentInfo> GetListStudent()
+        {
+            var studentsInfo = _context.Students.Select(s => new StudentInfo
+            {
+                StudentId = s.StudentId,
+                StudentName = s.StudentName,
+                Sex = s.Sex,
+                DOB = s.Dob,
+                ClassName = string.Join(", ", s.ClassStudentSubjects.Select(css => css.Class.ClassName).Distinct()),
+                SubjectName = string.Join(", ", s.ClassStudentSubjects.Select(css => css.Subject.SubjectName).Distinct())
+            }).ToList();
+
+            return studentsInfo;
+        }
         public Student GetStudentByStudentName(string studentName)
         {
             var student = _context.Students
@@ -114,6 +146,36 @@ namespace Project.Logics
 
             return student;
         }
+        public void AddStudent(Student student)
+        {
+            int nextStudentId = 1;
+
+            if (_context.Students.Any())
+            {
+                nextStudentId = _context.Students.Max(s => s.StudentId) + 1;
+            }
+
+            student.StudentId = nextStudentId;
+            _context.Students.Add(student);
+            _context.SaveChanges();
+        }
+
+        public void UpdateStudent(Student student)
+        {
+            _context.Students.Update(student);
+            _context.SaveChanges();
+        }
+
+        public void DeleteStudent(int studentId)
+        {
+            Student student = _context.Students.FirstOrDefault(s => s.StudentId == studentId);
+            if (student != null)
+            {
+                _context.Students.Remove(student);
+                _context.SaveChanges();
+            }
+        }
+
 
     }
 }

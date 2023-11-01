@@ -22,5 +22,15 @@ namespace Project.Logics
 
             return subjectName;
         }
+
+        public List<string> GetSubjectNames()
+        {
+            var dbContext = new Prn211Context();
+            var subjectNames = dbContext.Subjects
+                .Select(s => s.SubjectName)
+                .ToList();
+
+            return subjectNames;
+        }
     }
 }

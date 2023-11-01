@@ -53,6 +53,8 @@
             cbStudentid = new ComboBox();
             label9 = new Label();
             textBoxSubject = new TextBox();
+            openFileDialog1 = new OpenFileDialog();
+            importButton = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -165,7 +167,7 @@
             // 
             // update
             // 
-            update.Location = new Point(312, 479);
+            update.Location = new Point(87, 479);
             update.Name = "update";
             update.Size = new Size(94, 29);
             update.TabIndex = 14;
@@ -265,11 +267,26 @@
             textBoxSubject.TabIndex = 25;
             textBoxSubject.TextChanged += textBoxSubject_TextChanged;
             // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // importButton
+            // 
+            importButton.Location = new Point(217, 479);
+            importButton.Name = "importButton";
+            importButton.Size = new Size(94, 29);
+            importButton.TabIndex = 26;
+            importButton.Text = "Import";
+            importButton.UseVisualStyleBackColor = true;
+            importButton.Click += importButton_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(962, 520);
+            Controls.Add(importButton);
             Controls.Add(textBoxSubject);
             Controls.Add(label9);
             Controls.Add(cbStudentid);
@@ -329,5 +346,7 @@
         private ComboBox cbStudentid;
         private Label label9;
         private TextBox textBoxSubject;
+        private OpenFileDialog openFileDialog1;
+        private Button importButton;
     }
 }
