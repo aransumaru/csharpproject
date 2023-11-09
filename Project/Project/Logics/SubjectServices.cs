@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Project.Models.StudentInfor;
 
 namespace Project.Logics
 {
@@ -32,5 +33,15 @@ namespace Project.Logics
 
             return subjectNames;
         }
+        public string GetSubjectNameByClassName(string className)
+        {
+            var subjectName = _context.ClassStudentSubjects
+                .Where(css => css.Class.ClassName == className)
+                .Select(css => css.Subject.SubjectName)
+                .FirstOrDefault();
+
+            return subjectName;
+        }
+
     }
 }

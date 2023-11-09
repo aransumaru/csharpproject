@@ -25,34 +25,40 @@ namespace Project
         private void LoadForDGV()
         {
             string selectedClassName = cbClass.SelectedValue.ToString();
-            List<StudentInfo> studentInfo = studentServices.GetStudentInfoByClassName(selectedClassName);
-            dataGridView1.AutoGenerateColumns = false;
-            dataGridView1.Columns.Clear();
-            dataGridView1.Columns.Add("StudentId", "Student ID");
-            dataGridView1.Columns.Add("StudentName", "Student Name");
-            dataGridView1.Columns.Add("SubjectName", "Subject Name");
-            dataGridView1.Columns.Add("Sex", "Sex");
-            dataGridView1.Columns.Add("Lab1", "Lab 1");
-            dataGridView1.Columns.Add("Lab2", "Lab 2");
-            dataGridView1.Columns.Add("Assignment", "Assignment");
-            dataGridView1.Columns.Add("TheoryExam", "Theory Exam");
-            dataGridView1.Columns.Add("PracticalExam", "Practical Exam");
-            dataGridView1.Columns["StudentId"].DataPropertyName = "StudentId";
-            dataGridView1.Columns["StudentName"].DataPropertyName = "StudentName";
-            dataGridView1.Columns["SubjectName"].DataPropertyName = "SubjectName";
-            dataGridView1.Columns["Sex"].DataPropertyName = "Sex";
-            dataGridView1.Columns["Lab1"].DataPropertyName = "Lab1";
-            dataGridView1.Columns["Lab2"].DataPropertyName = "Lab2";
-            dataGridView1.Columns["Assignment"].DataPropertyName = "Assignment";
-            dataGridView1.Columns["TheoryExam"].DataPropertyName = "TheoryExam";
-            dataGridView1.Columns["PracticalExam"].DataPropertyName = "PracticalExam";
+            var studentInfo = studentServices.GetStudentInfoByClassName(selectedClassName)
+                .Select(css => new
+                {
+                    StudentId = css.StudentId,
+                    StudentName = css.StudentName,
+                    SubjectName = css.SubjectName,
+                    Sex = css.Sex,
+                    Lab1 = css.Lab1,
+                    Lab2 = css.Lab2,
+                    Assignment = css.Assignment,
+                    TheoryExam = css.TheoryExam,
+                    PracticalExam = css.PracticalExam
+                })
+                .ToList();
+
             dataGridView1.DataSource = studentInfo;
         }
 
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
 
+                cbStudentid.Text = row.Cells["StudentId"].Value?.ToString();
+                textBoxSubject.Text = row.Cells["SubjectName"].Value?.ToString();
+                studentName.Text = row.Cells["StudentName"].Value?.ToString();
+                lab1.Text = row.Cells["Lab1"].Value?.ToString();
+                lab2.Text = row.Cells["Lab2"].Value?.ToString();
+                assignment.Text = row.Cells["Assignment"].Value?.ToString();
+                fe.Text = row.Cells["TheoryExam"].Value?.ToString();
+                pe.Text = row.Cells["PracticalExam"].Value?.ToString();
+            }
         }
 
         private void cbClass_SelectedIndexChanged(object sender, EventArgs e)

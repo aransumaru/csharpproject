@@ -12,6 +12,10 @@ namespace Project.Logics
 {
     internal class StudentServices: BaseServices
     {
+        public List<Student> GetListStudent(Prn211Context context)
+        {
+            return context.Students.ToList();
+        }
         public string messageBox = "";
         public List<Student> GetStudents()
         {
@@ -174,6 +178,57 @@ namespace Project.Logics
                 _context.Students.Remove(student);
                 _context.SaveChanges();
             }
+        }
+
+        public List<StudentInfo> GetStudentsByClassNameAndSubjectName(string className, string subjectName)
+        {
+            var studentsInfo = _context.ClassStudentSubjects
+                .Where(css => css.Class.ClassName == className && css.Subject.SubjectName == subjectName)
+                .Select(css => new StudentInfo
+                {
+                    StudentId = css.Student.StudentId,
+                    StudentName = css.Student.StudentName,
+                    Sex = css.Student.Sex,
+                    DOB = css.Student.Dob,
+                    ClassName = css.Class.ClassName,
+                    SubjectName = css.Subject.SubjectName,
+                    Lab1 = css.Student.ScoreSubjectStudents
+                        .Where(sss => sss.SubjectId == css.SubjectId)
+                        .Select(sss => sss.Score.Lab1)
+                        .FirstOrDefault(),
+                    Lab2 = css.Student.ScoreSubjectStudents
+                        .Where(sss => sss.SubjectId == css.SubjectId)
+                        .Select(sss => sss.Score.Lab2)
+                        .FirstOrDefault(),
+                    Assignment = css.Student.ScoreSubjectStudents
+                        .Where(sss => sss.SubjectId == css.SubjectId)
+                        .Select(sss => sss.Score.Assignment)
+                        .FirstOrDefault(),
+                    TheoryExam = css.Student.ScoreSubjectStudents
+                        .Where(sss => sss.SubjectId == css.SubjectId)
+                        .Select(sss => sss.Score.TheoryExam)
+                        .FirstOrDefault(),
+                    PracticalExam = css.Student.ScoreSubjectStudents
+                        .Where(sss => sss.SubjectId == css.SubjectId)
+                        .Select(sss => sss.Score.PracticalExam)
+                        .FirstOrDefault()
+                })
+                .ToList();
+
+            return studentsInfo;
+        }
+        public List<StudentInfo> GetStudentsByClassName(string className)
+        {
+            var studentsByClass = _context.ClassStudentSubjects
+                .Where(css => css.Class.ClassName == className)
+                .Select(css => new StudentInfo
+                {
+                    StudentId = css.Student.StudentId,
+                    StudentName = css.Student.StudentName,
+                })
+                .ToList();
+
+            return studentsByClass;
         }
 
 

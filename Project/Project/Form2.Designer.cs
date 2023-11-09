@@ -45,9 +45,6 @@
             studentidText = new TextBox();
             label4 = new Label();
             groupBox1 = new GroupBox();
-            comboBox1 = new ComboBox();
-            comboBox2 = new ComboBox();
-            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
@@ -219,39 +216,11 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Data input";
             // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(675, 43);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(113, 28);
-            comboBox1.TabIndex = 20;
-            // 
-            // comboBox2
-            // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(427, 43);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(113, 28);
-            comboBox2.TabIndex = 21;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(328, 46);
-            label3.Name = "label3";
-            label3.Size = new Size(42, 20);
-            label3.TabIndex = 22;
-            label3.Text = "Class";
-            // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(label3);
-            Controls.Add(comboBox2);
-            Controls.Add(comboBox1);
             Controls.Add(groupBox1);
             Controls.Add(label4);
             Controls.Add(cbStudent);
@@ -284,8 +253,5 @@
         private TextBox studentidText;
         private Label label4;
         private GroupBox groupBox1;
-        private ComboBox comboBox1;
-        private ComboBox comboBox2;
-        private Label label3;
     }
 }

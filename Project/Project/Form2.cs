@@ -20,6 +20,7 @@ namespace Project
         ScoreServices scoreServices = new ScoreServices();
         SubjectServices subjectServices = new SubjectServices();
         public string messageBoxForm = "";
+        private int selectedStudentId;
         public Form2()
         {
             InitializeComponent();
@@ -43,55 +44,74 @@ namespace Project
             var selectedValue = (KeyValuePair<int, string>)cbStudent.SelectedItem;
             int selectedStudentId = selectedValue.Key;
 
+            List<StudentInfo> studentsInfo = new List<StudentInfo>();
+
             if (selectedStudentId == 0)
             {
-                List<StudentInfo> studentsInfo = studentServices.GetListStudent();
-                dataGridView1.AutoGenerateColumns = false;
-                dataGridView1.Columns.Clear();
-                dataGridView1.Columns.Add("StudentId", "Student ID");
-                dataGridView1.Columns.Add("StudentName", "Student Name");
-                dataGridView1.Columns.Add("Sex", "Sex");
-                dataGridView1.Columns.Add("DOB", "DOB");
-                dataGridView1.Columns.Add("Class", "Class");
-                dataGridView1.Columns.Add("Subject", "Subject");
-                dataGridView1.Columns["StudentId"].DataPropertyName = "StudentId";
-                dataGridView1.Columns["StudentName"].DataPropertyName = "StudentName";
-                dataGridView1.Columns["Sex"].DataPropertyName = "Sex";
-                dataGridView1.Columns["DOB"].DataPropertyName = "DOB";
-                dataGridView1.Columns["Class"].DataPropertyName = "ClassName";
-                dataGridView1.Columns["Subject"].DataPropertyName = "SubjectName";
+                studentsInfo = studentServices.GetListStudent()
+                    .Select(s => new StudentInfo
+                    {
+                        StudentId = s.StudentId,
+                        StudentName = s.StudentName,
+                        Sex = s.Sex,
+                        DOB = s.DOB,
+                        ClassName = s.ClassName,
+                        SubjectName = s.SubjectName
+                    }).ToList();
 
                 dataGridView1.DataSource = studentsInfo;
-
-                studentName.Clear();
-
+                dataGridView1.Columns["Lab1"].Visible = false;
+                dataGridView1.Columns["Lab2"].Visible = false;
+                dataGridView1.Columns["Assignment"].Visible = false;
+                dataGridView1.Columns["TheoryExam"].Visible = false;
+                dataGridView1.Columns["PracticalExam"].Visible = false;
             }
             else
             {
                 StudentInfo studentInfo = studentServices.GetStudentInfoByStudentId(selectedStudentId);
-                List<StudentInfo> studentInfoList = new List<StudentInfo> { studentInfo };
-                dataGridView1.AutoGenerateColumns = false;
-                dataGridView1.Columns.Clear();
-                dataGridView1.Columns.Add("StudentId", "Student ID");
-                dataGridView1.Columns.Add("StudentName", "Student Name");
-                dataGridView1.Columns.Add("Sex", "Sex");
-                dataGridView1.Columns.Add("DOB", "DOB");
-                dataGridView1.Columns.Add("Class", "Class");
-                dataGridView1.Columns.Add("Subject", "Subject");
-                dataGridView1.Columns["StudentId"].DataPropertyName = "StudentId";
-                dataGridView1.Columns["StudentName"].DataPropertyName = "StudentName";
-                dataGridView1.Columns["Sex"].DataPropertyName = "Sex";
-                dataGridView1.Columns["DOB"].DataPropertyName = "DOB";
-                dataGridView1.Columns["Class"].DataPropertyName = "ClassName";
-                dataGridView1.Columns["Subject"].DataPropertyName = "SubjectName";
-                dataGridView1.DataSource = studentInfoList;
+                studentsInfo.Add(studentInfo);
+
+                dataGridView1.DataSource = studentsInfo
+                    .Select(s => new StudentInfo
+                    {
+                        StudentId = s.StudentId,
+                        StudentName = s.StudentName,
+                        Sex = s.Sex,
+                        DOB = s.DOB,
+                        ClassName = s.ClassName,
+                        SubjectName = s.SubjectName
+                    }).ToList();
             }
+
+            studentName.Clear();
         }
+
 
 
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                StudentInfo studentInfo = (StudentInfo)row.DataBoundItem;
+                selectedStudentId = studentInfo.StudentId;
+                cbStudent.Text = studentInfo.StudentId.ToString();
+                studentName.Text = studentInfo.StudentName.ToString();
+                studentidText.Text = studentInfo.StudentId.ToString();
+                dateTimePicker1.Value = studentInfo.DOB ?? DateTime.Now;
+
+                if (studentInfo.Sex == "Male")
+                {
+                    maleRadioButton.Checked = true;
+                    femaleRadioButton.Checked = false;
+                }
+                else if (studentInfo.Sex == "Female")
+                {
+                    maleRadioButton.Checked = false;
+                    femaleRadioButton.Checked = true;
+                }
+            }
 
         }
 
@@ -166,9 +186,8 @@ namespace Project
 
         private void editButton_Click(object sender, EventArgs e)
         {
-            if (cbStudent.SelectedIndex > 0)
+            if (selectedStudentId > 0)
             {
-                int selectedStudentId = (int)cbStudent.SelectedValue;
 
                 Student student = studentServices.GetStudentByStudentId(selectedStudentId);
                 if (student != null)
@@ -244,5 +263,7 @@ namespace Project
             maleRadioButton.Checked = false;
             femaleRadioButton.Checked = false;
         }
+
+
     }
 }
